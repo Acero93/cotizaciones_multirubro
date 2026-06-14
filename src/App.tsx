@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { QuotationProvider } from './context/QuotationContext';
 import Home from './pages/Home';
@@ -6,7 +6,7 @@ import Builder from './pages/Builder';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ThemeProvider>
         <QuotationProvider>
           <Routes>
@@ -15,6 +15,6 @@ export default function App() {
           </Routes>
         </QuotationProvider>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
