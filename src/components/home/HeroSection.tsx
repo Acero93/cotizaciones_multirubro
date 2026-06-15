@@ -34,7 +34,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            Crea cotizaciones profesionales para <strong>cualquier profesión o rubro</strong>.
+            Crea cotizaciones profesionales para <strong>cualquier profesión o rubro GRATIS</strong>.
             Personaliza cada detalle, agrega tu logo, configura impuestos y exporta a PDF en un instante.
           </p>
 
@@ -44,7 +44,7 @@ export default function HeroSection() {
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-2xl shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
             >
               <FileText className="w-5 h-5" />
-              Crear Cotización
+              Crear Cotización GRATIS
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

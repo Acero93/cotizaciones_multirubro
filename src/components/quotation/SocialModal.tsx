@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Code2, Camera, Coffee, ThumbsUp, Share2, X } from 'lucide-react';
+import { Code2, Camera, ThumbsUp, Share2, X } from 'lucide-react';
 
 interface SocialModalProps {
   isOpen: boolean;
@@ -52,11 +52,11 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
 
             <motion.div
               initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              animate={{ scale: 1.3 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
               className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/30"
             >
-              <Heart className="w-8 h-8 text-white" />
+              <img src="https://i.imgur.com/1qJXpW7.png" alt="icon" className="w-16 h-16" />
             </motion.div>
 
             <h2 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 mb-3">
@@ -69,7 +69,7 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
 
             <div className="space-y-3 mb-6">
               <a
-                href="https://instagram.com/codeandofuturochile"
+                href="https://instagram.com/codeando.futuro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium text-sm hover:scale-[1.02] transition-transform"
@@ -80,7 +80,7 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
               </a>
 
               <a
-                href="https://danielaracena.dev"
+                href="https://acero93.github.io/cv"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 rounded-2xl bg-slate-800 dark:bg-slate-700 text-white font-medium text-sm hover:scale-[1.02] transition-transform"
@@ -90,14 +90,6 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
                 <span className="text-xs opacity-80">Daniel Aracena Ch.</span>
               </a>
 
-              <button
-                onClick={handleContinue}
-                className="flex items-center gap-3 p-3 rounded-2xl bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 font-medium text-sm hover:scale-[1.02] transition-transform w-full"
-              >
-                <Coffee className="w-5 h-5" />
-                <span className="flex-1 text-left">Invítame un café virtual</span>
-                <span className="text-xs opacity-70">☕</span>
-              </button>
             </div>
 
             <div className="flex items-center gap-3 justify-center mb-4">

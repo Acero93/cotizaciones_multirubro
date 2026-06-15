@@ -11,7 +11,7 @@ export default function Footer() {
             </p>
             <div className="mt-2 flex flex-col gap-1">
               <a
-                href="https://danielaracena.dev"
+                href="https://acero93.github.io/cv"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-primary hover:text-primary-dark transition-colors flex items-center gap-1.5 justify-center sm:justify-start"
@@ -20,7 +20,7 @@ export default function Footer() {
                 Daniel Aracena Ch. — Software Engineer
               </a>
               <a
-                href="https://instagram.com/codeandofuturochile"
+                href="https://instagram.com/codeando.futuro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-slate-500 dark:text-slate-400 hover:text-accent transition-colors flex items-center gap-1.5 justify-center sm:justify-start"
