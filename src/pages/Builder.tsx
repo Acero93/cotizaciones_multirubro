@@ -55,7 +55,7 @@ export default function Builder() {
         onContinue={handleContinueExport}
       />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-6 overflow-x-hidden">
+      <main className="flex-1 max-w-7xl mx-auto w-full min-w-0 max-w-full px-4 sm:px-6 lg:px-8 py-8 space-y-6 overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function Builder() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-2xl p-3 sm:p-4 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 no-print"
+          className="glass rounded-2xl p-3 sm:p-4 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 no-print max-w-full"
         >
           <div className="flex items-center gap-2">
             <Hash className="w-4 h-4 text-slate-400 shrink-0" />
@@ -102,7 +102,7 @@ export default function Builder() {
             <select
               value={data.currency}
               onChange={(e) => dispatch({ type: 'SET_FIELD', field: 'currency', value: e.target.value })}
-              className="flex-1 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 py-1.5 text-xs bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
             >
               <option value="CLP">CLP — Peso Chileno</option>
               <option value="USD">USD — Dólar</option>
@@ -118,8 +118,8 @@ export default function Builder() {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          <div className="space-y-6 no-print">
+        <div className="grid lg:grid-cols-2 gap-6 w-full min-w-0">
+          <div className="space-y-6 no-print w-full min-w-0 max-w-full">
             <CompanyPanel />
             <ClientPanel />
             <ItemsTable />
@@ -128,7 +128,7 @@ export default function Builder() {
             <CustomSectionsPanel />
             <ExportBar onPrint={handleExportClick} />
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden lg:block w-full min-w-0 max-w-full">
             <div className="sticky top-24">
               <div className="glass rounded-2xl p-4 overflow-auto max-h-[calc(100vh-120px)]">
                 <QuotationPreview ref={previewRef} />
@@ -137,7 +137,7 @@ export default function Builder() {
           </div>
         </div>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden w-full min-w-0 max-w-full">
           <div className="glass rounded-2xl p-4 overflow-auto">
             <QuotationPreview ref={previewRef} />
           </div>
