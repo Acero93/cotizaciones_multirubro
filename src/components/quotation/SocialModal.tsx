@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Camera, ThumbsUp, Share2, X, Heart } from 'lucide-react';
+import { Code2, Camera, ThumbsUp, Share2, X } from 'lucide-react';
 
 interface SocialModalProps {
   isOpen: boolean;
@@ -54,9 +54,13 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-              className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-5 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/30"
+              className="w-18 h-18 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-5 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-xl shadow-primary/30"
             >
-              <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+              <img
+                src="https://i.imgur.com/1qJXpW7.png"
+                alt="Icono social"
+                className="w-18 h-18 sm:w-16 sm:h-16 object-contain"
+              />
             </motion.div>
 
             <h2 className="text-lg sm:text-xl font-extrabold text-slate-800 dark:text-slate-100 mb-2 sm:mb-3">
@@ -76,7 +80,7 @@ export default function SocialModal({ isOpen, onClose, onContinue }: SocialModal
               >
                 <Camera className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span className="flex-1 text-left">Seguir en Instagram</span>
-                <span className="text-[10px] sm:text-xs opacity-80">@codeandofuturochile</span>
+                <span className="text-[10px] sm:text-xs opacity-80">@codeando.futuro</span>
               </a>
 
               <a

@@ -1,5 +1,4 @@
 import { useRef, useState, useCallback } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import { motion } from 'framer-motion';
 import { Calendar, Hash, Clock, Coins } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
@@ -14,36 +13,29 @@ import QuotationPreview from '../components/quotation/QuotationPreview';
 import ExportBar from '../components/quotation/ExportBar';
 import SocialModal from '../components/quotation/SocialModal';
 import { useQuotation } from '../context/QuotationContext';
+import { openPrintableWindow } from '../utils/export';
 
 export default function Builder() {
   const { data, dispatch } = useQuotation();
   const previewRef = useRef<HTMLDivElement>(null);
   const [showSocialModal, setShowSocialModal] = useState(false);
 
-  const handlePrint = useReactToPrint({
-    contentRef: previewRef,
-    documentTitle: `Cotizacion_${data.number}`,
-    pageStyle: `
-      @page { size: A4; margin: 10mm; }
-      @media print {
-        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .no-print { display: none !important; }
-      }
-    `,
-  });
+  const handleExport = useCallback(() => {
+    openPrintableWindow('quotation-preview', `Cotizacion_${data.number}`);
+  }, [data.number]);
 
   const handleExportClick = useCallback(() => {
     const hideModal = localStorage.getItem('hide_social_modal');
     if (hideModal === 'true') {
-      handlePrint();
+      handleExport();
     } else {
       setShowSocialModal(true);
     }
-  }, [handlePrint]);
+  }, [handleExport]);
 
   const handleContinueExport = useCallback(() => {
-    handlePrint();
-  }, [handlePrint]);
+    handleExport();
+  }, [handleExport]);
 
   return (
     <div className="min-h-screen flex flex-col">

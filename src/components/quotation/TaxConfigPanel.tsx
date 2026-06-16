@@ -26,7 +26,8 @@ export default function TaxConfigPanel() {
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="flex gap-2 min-w-0">
               <input placeholder="Nombre (IVA, IGV...)" value={data.tax.name} onChange={(e) => dispatch({ type: 'SET_TAX', tax: { ...data.tax, name: e.target.value } })} className={`flex-1 min-w-0 ${inputClass}`} />
               <div className="relative w-20 sm:w-24 shrink-0">
-                <input type="number" min="0" max="100" value={data.tax.rate} onChange={(e) => dispatch({ type: 'SET_TAX', tax: { ...data.tax, rate: Number(e.target.value) } })} className={`w-full text-right ${inputClass}`} />
+                <input type="number" min="0" max="100" value={data.tax.rate} onChange={(e) => dispatch({ type: 'SET_TAX', tax: { ...data.tax, rate: Number(e.target.value) } })} className={`w-full text-left
+                   ${inputClass}`} />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm">%</span>
               </div>
             </motion.div>
@@ -47,11 +48,11 @@ export default function TaxConfigPanel() {
               <div className="relative flex-1 min-w-0">
                 {data.discountType === 'percentage' ? (
                   <>
-                    <input type="number" min="0" max="100" value={data.discountValue} onChange={(e) => dispatch({ type: 'SET_DISCOUNT', enabled: true, discountType: 'percentage', value: Number(e.target.value) })} className={`w-full text-right ${inputClass}`} />
+                    <input type="number" min="0" max="100" value={data.discountValue} onChange={(e) => dispatch({ type: 'SET_DISCOUNT', enabled: true, discountType: 'percentage', value: Number(e.target.value) })} className={`w-full text-left ${inputClass}`} />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm">%</span>
                   </>
                 ) : (
-                  <input type="number" min="0" value={data.discountValue} onChange={(e) => dispatch({ type: 'SET_DISCOUNT', enabled: true, discountType: 'amount', value: Number(e.target.value) })} className={`w-full text-right ${inputClass}`} />
+                  <input type="number" min="0" value={data.discountValue} onChange={(e) => dispatch({ type: 'SET_DISCOUNT', enabled: true, discountType: 'amount', value: Number(e.target.value) })} className={`w-full text-left ${inputClass}`} />
                 )}
               </div>
             </motion.div>

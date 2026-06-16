@@ -15,7 +15,7 @@ export default function Navbar() {
               <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <span className="hidden sm:inline font-bold text-base sm:text-lg bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Cotizador Pro
+              Cotizador Multirubro
             </span>
           </Link>
 
