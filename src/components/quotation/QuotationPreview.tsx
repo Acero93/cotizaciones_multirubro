@@ -36,7 +36,6 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
     >
       <style>{`
         #quotation-preview * { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        #quotation-preview table { min-width: 100%; }
         @media print {
           #quotation-preview { padding: 0 !important; max-width: 210mm; margin: 0 auto; }
           body > *:not(#quotation-preview) { display: none !important; }
@@ -46,7 +45,7 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
 
       <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="flex items-start justify-between mb-8 pb-6 border-b-2 border-slate-800">
+        <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 sm:gap-0 mb-8 pb-6 border-b-2 border-slate-800">
           <div className="flex items-start gap-4">
             {data.company.logo && (
               <img src={data.company.logo} alt="Logo" className="w-20 h-20 object-contain rounded" />
@@ -91,7 +90,16 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
         </div>
 
         {/* Items Table */}
-        <table className="w-full mb-6 border-collapse">
+        <table className="w-full mb-6 border-collapse table-fixed">
+          <colgroup>
+            <col className="w-[10%]" />
+            <col className="w-[28%]" />
+            <col className="w-[9%]" />
+            <col className="w-[10%]" />
+            <col className="w-[15%]" />
+            <col className="w-[13%]" />
+            <col className="w-[15%]" />
+          </colgroup>
           <thead>
             <tr className="bg-slate-800 text-white text-xs">
               <th className="py-2.5 px-3 text-left font-semibold rounded-tl-lg">Código</th>
@@ -119,8 +127,8 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
         </table>
 
         {/* Totals */}
-        <div className="flex justify-end mb-6">
-          <div className="w-64 space-y-1.5 text-xs">
+        <div className="flex sm:justify-end mb-6">
+          <div className="w-full sm:w-64 sm:ml-auto space-y-1.5 text-xs">
             <div className="flex justify-between py-1 border-b border-slate-200">
               <span className="text-slate-600">Subtotal</span>
               <span className="font-medium">{formatCurrency(subtotal, data.currency)}</span>

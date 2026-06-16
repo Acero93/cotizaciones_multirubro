@@ -14,7 +14,7 @@ export default function Navbar() {
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/25 group-hover:shadow-primary/40 transition-shadow">
               <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
-            <span className="hidden xs:inline font-bold text-base sm:text-lg bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="hidden sm:inline font-bold text-base sm:text-lg bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Cotizador Pro
             </span>
           </Link>

@@ -12,7 +12,7 @@ export default function ItemsTable() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="glass rounded-2xl p-3 sm:p-6 space-y-4"
+      className="glass rounded-2xl p-3 sm:p-6 space-y-4 overflow-hidden"
     >
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-base sm:text-lg text-slate-800 dark:text-slate-100">Items de la Cotización</h2>
@@ -25,9 +25,9 @@ export default function ItemsTable() {
         </button>
       </div>
 
-      <div className="overflow-x-auto -mx-3 sm:mx-0 scrollbar-thin">
-        <div className="min-w-[640px] sm:min-w-0 px-3 sm:px-0">
-          <table className="w-full text-xs sm:text-sm">
+      <div className="overflow-x-auto -mx-3 sm:mx-0" style={{ overscrollBehaviorX: 'contain' }}>
+        <div className="min-w-[520px] sm:min-w-0 px-3 sm:px-0">
+          <table className="w-full text-xs sm:text-sm table-fixed sm:table-auto">
             <thead>
               <tr className="border-b-2 border-slate-200 dark:border-slate-700">
                 <th className="w-6 sm:w-8 py-2"></th>
@@ -78,7 +78,7 @@ function ItemRow({ item }: { item: QuotationItem }) {
         <input value={item.code} onChange={(e) => update('code', e.target.value)} placeholder="Cód." className={`${inputClass} w-16 sm:w-20`} />
       </td>
       <td className="py-1.5 sm:py-2 px-1 sm:px-2">
-        <input value={item.description} onChange={(e) => update('description', e.target.value)} placeholder="Descripción" className={`${inputClass} min-w-[100px] sm:min-w-[140px]`} />
+        <input value={item.description} onChange={(e) => update('description', e.target.value)} placeholder="Descripción" className={`${inputClass} min-w-[80px] sm:min-w-[140px]`} />
       </td>
       <td className="py-1.5 sm:py-2 px-1 sm:px-2">
         <input type="number" min="1" value={item.quantity} onChange={(e) => update('quantity', Number(e.target.value))} className={`${inputClass} w-12 sm:w-16 text-right`} />
