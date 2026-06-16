@@ -90,41 +90,34 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
         </div>
 
         {/* Items Table */}
-        <table className="w-full mb-6 border-collapse table-fixed">
-          <colgroup>
-            <col className="w-[10%]" />
-            <col className="w-[28%]" />
-            <col className="w-[9%]" />
-            <col className="w-[10%]" />
-            <col className="w-[15%]" />
-            <col className="w-[13%]" />
-            <col className="w-[15%]" />
-          </colgroup>
+        <div className="overflow-x-auto mb-6 rounded-lg" style={{ overscrollBehaviorX: 'contain' }}>
+        <table className="w-full border-collapse" style={{ minWidth: '520px' }}>
           <thead>
             <tr className="bg-slate-800 text-white text-xs">
-              <th className="py-2.5 px-3 text-left font-semibold rounded-tl-lg">Código</th>
+              <th className="py-2.5 px-3 text-left font-semibold whitespace-nowrap rounded-tl-lg">Código</th>
               <th className="py-2.5 px-3 text-left font-semibold">Descripción</th>
-              <th className="py-2.5 px-3 text-center font-semibold">Cant.</th>
-              <th className="py-2.5 px-3 text-center font-semibold">Unidad</th>
-              <th className="py-2.5 px-3 text-right font-semibold">P. Unitario</th>
-              <th className="py-2.5 px-3 text-right font-semibold">Descuento</th>
-              <th className="py-2.5 px-3 text-right font-semibold rounded-tr-lg">Total</th>
+              <th className="py-2.5 px-3 text-center font-semibold whitespace-nowrap">Cant.</th>
+              <th className="py-2.5 px-3 text-center font-semibold whitespace-nowrap">Unidad</th>
+              <th className="py-2.5 px-3 text-right font-semibold whitespace-nowrap">P. Unitario</th>
+              <th className="py-2.5 px-3 text-right font-semibold whitespace-nowrap">Descuento</th>
+              <th className="py-2.5 px-3 text-right font-semibold whitespace-nowrap rounded-tr-lg">Total</th>
             </tr>
           </thead>
           <tbody>
             {data.items.map((item, idx) => (
               <tr key={item.id} className={`border-b border-slate-200 text-xs ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
-                <td className="py-2 px-3">{item.code || '—'}</td>
+                <td className="py-2 px-3 whitespace-nowrap">{item.code || '—'}</td>
                 <td className="py-2 px-3">{item.description || '—'}</td>
-                <td className="py-2 px-3 text-center">{item.quantity}</td>
-                <td className="py-2 px-3 text-center">{item.unit}</td>
-                <td className="py-2 px-3 text-right">{formatCurrency(item.unitPrice, data.currency)}</td>
-                <td className="py-2 px-3 text-right">{item.discount > 0 ? formatCurrency(item.discount, data.currency) : '—'}</td>
-                <td className="py-2 px-3 text-right font-semibold">{formatCurrency(calcItemTotal(item), data.currency)}</td>
+                <td className="py-2 px-3 text-center whitespace-nowrap">{item.quantity}</td>
+                <td className="py-2 px-3 text-center whitespace-nowrap">{item.unit}</td>
+                <td className="py-2 px-3 text-right whitespace-nowrap">{formatCurrency(item.unitPrice, data.currency)}</td>
+                <td className="py-2 px-3 text-right whitespace-nowrap">{item.discount > 0 ? formatCurrency(item.discount, data.currency) : '—'}</td>
+                <td className="py-2 px-3 text-right font-semibold whitespace-nowrap">{formatCurrency(calcItemTotal(item), data.currency)}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
 
         {/* Totals */}
         <div className="flex sm:justify-end mb-6">
