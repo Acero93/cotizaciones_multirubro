@@ -68,7 +68,7 @@ export default function Builder() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-2xl p-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 no-print"
+          className="glass rounded-2xl p-3 sm:p-4 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 no-print"
         >
           <div className="flex items-center gap-2">
             <Hash className="w-4 h-4 text-slate-400 shrink-0" />

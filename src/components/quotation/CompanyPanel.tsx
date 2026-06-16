@@ -24,23 +24,23 @@ export default function CompanyPanel() {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass rounded-2xl p-6 space-y-5"
+      className="glass rounded-2xl p-4 sm:p-6 space-y-5"
     >
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
           <Upload className="w-4 h-4 text-primary" />
         </div>
-        <h2 className="font-bold text-lg text-slate-800 dark:text-slate-100">Datos de tu Empresa</h2>
+        <h2 className="font-bold text-base sm:text-lg text-slate-800 dark:text-slate-100">Datos de tu Empresa</h2>
       </div>
 
-      <div className="flex items-start gap-5">
-        <div className="relative">
+      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+        <div className="relative shrink-0 self-center sm:self-start">
           {data.company.logo ? (
             <div className="relative group">
               <img
                 src={data.company.logo}
                 alt="Logo"
-                className="w-24 h-24 rounded-xl object-contain border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-2"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-contain border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-2"
               />
               <button
                 onClick={() => dispatch({ type: 'SET_COMPANY_LOGO', logo: null })}
@@ -52,52 +52,32 @@ export default function CompanyPanel() {
           ) : (
             <button
               onClick={() => fileRef.current?.click()}
-              className="w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 flex flex-col items-center justify-center gap-1.5 transition-all cursor-pointer"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 flex flex-col items-center justify-center gap-1 transition-all cursor-pointer"
             >
               <Upload className="w-5 h-5 text-slate-400 dark:text-slate-500" />
-              <span className="text-xs text-slate-400 dark:text-slate-500">Logo</span>
+              <span className="text-[10px] sm:text-xs text-slate-400 dark:text-slate-500">Logo</span>
             </button>
           )}
           <input ref={fileRef} type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
         </div>
 
-        <div className="flex-1 grid sm:grid-cols-2 gap-3">
+        <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
           <input
             placeholder="Nombre de la empresa *"
             value={data.company.name}
             onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'name', value: e.target.value })}
-            className={`col-span-2 ${inputClass}`}
+            className={`col-span-1 sm:col-span-2 ${inputClass}`}
           />
-          <input
-            placeholder="Dirección"
-            value={data.company.address}
-            onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'address', value: e.target.value })}
-            className={inputClass}
-          />
-          <input
-            placeholder="Teléfono"
-            value={data.company.phone}
-            onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'phone', value: e.target.value })}
-            className={inputClass}
-          />
-          <input
-            placeholder="Email"
-            value={data.company.email}
-            onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'email', value: e.target.value })}
-            className={inputClass}
-          />
-          <input
-            placeholder="Sitio web"
-            value={data.company.website}
-            onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'website', value: e.target.value })}
-            className={inputClass}
-          />
+          <input placeholder="Dirección" value={data.company.address} onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'address', value: e.target.value })} className={inputClass} />
+          <input placeholder="Teléfono" value={data.company.phone} onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'phone', value: e.target.value })} className={inputClass} />
+          <input placeholder="Email" value={data.company.email} onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'email', value: e.target.value })} className={inputClass} />
+          <input placeholder="Sitio web" value={data.company.website} onChange={(e) => dispatch({ type: 'SET_COMPANY_FIELD', field: 'website', value: e.target.value })} className={inputClass} />
         </div>
       </div>
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Campos extra</span>
+          <span className="text-[10px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Campos extra</span>
           <button
             onClick={() => dispatch({ type: 'ADD_COMPANY_EXTRA_FIELD' })}
             className="flex items-center gap-1 text-xs text-primary hover:text-primary-dark transition-colors"
@@ -107,26 +87,22 @@ export default function CompanyPanel() {
           </button>
         </div>
         {data.company.extraFields.map((field) => (
-          <div key={field.id} className="flex gap-2 items-center">
+          <div key={field.id} className="flex gap-1.5 sm:gap-2 items-center">
             <input
               placeholder="Etiqueta"
               value={field.label}
-              onChange={(e) =>
-                dispatch({ type: 'UPDATE_COMPANY_EXTRA_FIELD', id: field.id, label: e.target.value, value: field.value })
-              }
+              onChange={(e) => dispatch({ type: 'UPDATE_COMPANY_EXTRA_FIELD', id: field.id, label: e.target.value, value: field.value })}
               className={smallInputClass}
             />
             <input
               placeholder="Valor"
               value={field.value}
-              onChange={(e) =>
-                dispatch({ type: 'UPDATE_COMPANY_EXTRA_FIELD', id: field.id, label: field.label, value: e.target.value })
-              }
+              onChange={(e) => dispatch({ type: 'UPDATE_COMPANY_EXTRA_FIELD', id: field.id, label: field.label, value: e.target.value })}
               className={smallInputClass}
             />
             <button
               onClick={() => dispatch({ type: 'REMOVE_COMPANY_EXTRA_FIELD', id: field.id })}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors shrink-0"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>

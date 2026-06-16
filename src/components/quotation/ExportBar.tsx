@@ -36,39 +36,40 @@ export default function ExportBar({ onPrint }: ExportBarProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className="glass rounded-2xl p-4 flex flex-wrap items-center gap-3"
+      className="glass rounded-2xl p-3 sm:p-4 flex flex-wrap items-center gap-2 sm:gap-3"
     >
       <button
         onClick={onPrint}
-        className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-semibold rounded-xl shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 transition-all"
+        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-primary to-primary-dark text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 transition-all"
       >
         <FileDown className="w-4 h-4" />
-        Exportar PDF
+        <span className="hidden sm:inline">Exportar PDF</span>
+        <span className="sm:hidden">PDF</span>
       </button>
 
-      <div className="flex-1" />
+      <div className="flex-1 hidden sm:block" />
 
       <button
         onClick={handleSave}
-        className="flex items-center gap-2 px-4 py-2.5 text-slate-600 dark:text-slate-400 text-sm font-medium rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+        className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-medium rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
       >
         <Save className="w-4 h-4" />
-        Guardar
+        <span className="hidden sm:inline">Guardar</span>
       </button>
 
       <button
         onClick={handleLoad}
-        className="flex items-center gap-2 px-4 py-2.5 text-slate-600 dark:text-slate-400 text-sm font-medium rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+        className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-medium rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
       >
-        Cargar
+        <span className="hidden sm:inline">Cargar</span>
+        <span className="sm:hidden">Cargar</span>
       </button>
 
       <button
         onClick={handleReset}
-        className="flex items-center gap-2 px-4 py-2.5 text-red-500 text-sm font-medium rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
+        className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 text-red-500 text-xs sm:text-sm font-medium rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
       >
         <Trash2 className="w-4 h-4" />
-        Reiniciar
       </button>
     </motion.div>
   );

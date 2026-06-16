@@ -44,7 +44,7 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
         }
       `}</style>
 
-      <div className="p-6 sm:p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
         <div className="flex items-start justify-between mb-8 pb-6 border-b-2 border-slate-800">
           <div className="flex items-start gap-4">
@@ -52,8 +52,8 @@ const QuotationPreview = forwardRef<HTMLDivElement>((_props, ref) => {
               <img src={data.company.logo} alt="Logo" className="w-20 h-20 object-contain rounded" />
             )}
             <div>
-              <h1 className="text-2xl font-extrabold text-slate-900">{data.company.name || 'Mi Empresa'}</h1>
-              <div className="mt-1.5 space-y-0.5 text-slate-600 text-xs">
+          <h1 className="text-lg sm:text-2xl font-extrabold text-slate-900">{data.company.name || 'Mi Empresa'}</h1>
+            <div className="mt-1.5 space-y-0.5 text-slate-600 text-[10px] sm:text-xs">
                 {data.company.address && <p>{data.company.address}</p>}
                 {data.company.phone && <p>Tel: {data.company.phone}</p>}
                 {data.company.email && <p>Email: {data.company.email}</p>}
