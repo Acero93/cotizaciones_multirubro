@@ -13,7 +13,7 @@ import QuotationPreview from '../components/quotation/QuotationPreview';
 import ExportBar from '../components/quotation/ExportBar';
 import SocialModal from '../components/quotation/SocialModal';
 import { useQuotation } from '../context/QuotationContext';
-import { openPrintableWindow } from '../utils/export';
+import { downloadPDF } from '../utils/export';
 
 export default function Builder() {
   const { data, dispatch } = useQuotation();
@@ -21,7 +21,7 @@ export default function Builder() {
   const [showSocialModal, setShowSocialModal] = useState(false);
 
   const handleExport = useCallback(() => {
-    openPrintableWindow('quotation-preview', `Cotizacion_${data.number}`);
+    downloadPDF('quotation-preview', `Cotizacion_${data.number}`);
   }, [data.number]);
 
   const handleExportClick = useCallback(() => {
