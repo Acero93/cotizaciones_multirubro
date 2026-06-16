@@ -62,39 +62,39 @@ export default function Builder() {
           animate={{ opacity: 1, y: 0 }}
           className="glass rounded-2xl p-3 sm:p-4 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 no-print max-w-full"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <Hash className="w-4 h-4 text-slate-400 shrink-0" />
             <input
               value={data.number}
               onChange={(e) => dispatch({ type: 'SET_FIELD', field: 'number', value: e.target.value })}
               placeholder="Nº Cotización"
-              className="flex-1 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 min-w-0 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <Calendar className="w-4 h-4 text-slate-400 shrink-0" />
             <input
               type="date"
               value={data.date}
               onChange={(e) => dispatch({ type: 'SET_FIELD', field: 'date', value: e.target.value })}
-              className="flex-1 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 color-scheme:dark focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 min-w-0 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 color-scheme:dark focus:outline-none focus:border-primary transition-colors"
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <Clock className="w-4 h-4 text-slate-400 shrink-0" />
             <input
               type="date"
               value={data.validUntil}
               onChange={(e) => dispatch({ type: 'SET_FIELD', field: 'validUntil', value: e.target.value })}
-              className="flex-1 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 min-w-0 px-2 py-1.5 text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <Coins className="w-4 h-4 text-slate-400 shrink-0" />
             <select
               value={data.currency}
               onChange={(e) => dispatch({ type: 'SET_FIELD', field: 'currency', value: e.target.value })}
-              className="flex-1 py-1.5 text-xs bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 min-w-0 truncate px-1 py-1.5 text-xs md:text-sm bg-transparent border-b border-slate-200 dark:border-slate-700 dark:text-slate-200 focus:outline-none focus:border-primary transition-colors"
             >
               <option value="CLP">CLP — Peso Chileno</option>
               <option value="USD">USD — Dólar</option>
