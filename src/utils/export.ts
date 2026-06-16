@@ -9,6 +9,9 @@ const COLOR_PROPS = [
 ];
 
 function applyComputedColors(sourceDoc: Document, clonedDoc: Document): void {
+  // Remove ALL stylesheets from clone - we'll use only inline computed colors
+  clonedDoc.querySelectorAll('style, link[rel="stylesheet"]').forEach((el) => el.remove());
+
   const sourceEls = sourceDoc.querySelectorAll('#quotation-preview, #quotation-preview *');
   const clonedEls = clonedDoc.querySelectorAll('#quotation-preview, #quotation-preview *');
 
@@ -18,22 +21,36 @@ function applyComputedColors(sourceDoc: Document, clonedDoc: Document): void {
     if (!computed) return;
 
     const cloned = clonedEls[i] as HTMLElement;
-    const inline: string[] = [];
 
     COLOR_PROPS.forEach((prop) => {
       const val = computed.getPropertyValue(prop);
-      if (val && val !== 'rgba(0, 0, 0, 0)' && val !== 'transparent') {
-        inline.push(`${prop}: ${val}`);
+      if (val && val !== 'rgba(0, 0, 0, 0)' && val !== 'transparent' && val !== 'none') {
+        cloned.style.setProperty(prop, val);
       }
     });
 
+    // Copy layout-critical properties
+    const layoutProps = [
+      'display', 'flex-direction', 'justify-content', 'align-items', 'gap',
+      'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+      'margin', 'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+      'width', 'max-width', 'min-width', 'height', 'max-height',
+      'font-size', 'font-weight', 'font-family', 'text-align', 'line-height',
+      'border-style', 'border-width', 'border-radius', 'border-collapse',
+      'white-space', 'overflow', 'position', 'top', 'right', 'bottom', 'left',
+      'text-transform', 'letter-spacing',
+    ];
+    layoutProps.forEach((prop) => {
+      const val = computed.getPropertyValue(prop);
+      if (val && val !== 'normal' && val !== 'auto' && val !== 'none' && val !== '0px' && val !== 'static') {
+        cloned.style.setProperty(prop, val);
+      }
+    });
+
+    // Copy background
     const bgImage = computed.getPropertyValue('background-image');
     if (bgImage && bgImage !== 'none') {
-      inline.push(`background-image: ${bgImage}`);
-    }
-
-    if (inline.length > 0) {
-      cloned.style.cssText = inline.join('; ') + '; ' + cloned.style.cssText;
+      cloned.style.setProperty('background-image', bgImage);
     }
   });
 }
